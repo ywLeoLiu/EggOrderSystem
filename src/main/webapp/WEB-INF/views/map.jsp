@@ -4,7 +4,7 @@
 <head>
 <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Calendar Page</title>
+<title>Map Page</title>
 
 <link rel='stylesheet' href='resources/fullcalendar-3.9.0/fullcalendar.css' />
 <link href="resources/dashboard.css" rel="stylesheet">
@@ -21,24 +21,6 @@
   <link href="resources/dashboard.css" rel="stylesheet">
 
 
-<script>
-$(function() {
-
-	  // page is now ready, initialize the calendar...
-
-	  $('#calendar').fullCalendar({
-		  header: {
-			  left:   ' month,agendaWeek,agendaDay',
-			  center: 'title',
-			  right:  'today prev,next',
-		  }
-			  
-			
-	    // put your options and callbacks here
-	  })
-
-	});
-</script>
 
 
 </head>
@@ -100,10 +82,24 @@ $(function() {
         </nav>
         <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-4">
           <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
-            <h1 class="h2">Calendar</h1>
+            <h1 class="h2">Map</h1>
           </div>
         
-    <div id='calendar'></div>
+    <div id="googleMap" style="width:800px;height:400px;"></div>
+
+<script>
+function myMap() {
+  var mapProp= {
+      center:new google.maps.LatLng(-33.8871248,151.1879795),
+      zoom:16,
+  };
+  var map=new google.maps.Map(document.getElementById("googleMap"),mapProp);
+  var marker = new google.maps.Marker({position:mapProp.center});
+  marker.setMap(map);
+}
+</script>
+
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB5pmkDGxqdja_kT9ALjpxvrKvhOZQzu5I&callback=myMap"></script>
     </main>
 	</div>
 </div>
